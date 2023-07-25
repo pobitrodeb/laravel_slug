@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+// use Cviebrock\EloquentSluggable\Sluggable;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 class PostController extends Controller
 {
     /**
@@ -82,5 +84,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getSlug()
+    {
+        $slug = SlugService::createSlug(Post::class, 'slug', request('title'));
+        return response()->json(['slug' => $slug]);
     }
 }

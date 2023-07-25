@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/create-blog', [PostController::class, 'store'])->name('add.post');
+Route::post('/', [PostController::class, 'store'])->name('add.post');
+Route::get('check_slug', [PostController::class,  'getSlug'] );
